@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:tune_search/response.dart';
 import 'input_boundary.dart';
 import 'output_boundary.dart';
 import 'interactor.dart';
@@ -57,12 +56,14 @@ class _MyHomePageState extends State<MyHomePage> implements OutputBoundary {
   }
 
   @override
-  receive({Response response}) {
-    if (response is Success) {
-      debugPrint((response as Success).value);      
-    } else if (response is Failure){
-      displayError(context, (response).error);
-    }
+  receive({Future response}) {
+        response
+        .then((value) {
+        for (var track in value) {
+          debugPrint(track.toString());      
+        }      
+        })
+        .catchError((error) => displayError(context, error));
   }
 
   Future<void> displayError(BuildContext context, Exception e) async {

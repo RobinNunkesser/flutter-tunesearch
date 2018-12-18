@@ -6,7 +6,7 @@ import 'request.dart';
 class Interactor implements InputBoundary {
   @override
   send({Request request, OutputBoundary outputBoundary}) async {
-    var response = await TunesSearchGateway().fetchData(request.searchTerm);
+    var response = TunesSearchGateway().fetchData(request.searchTerm);
     outputBoundary.receive(response: response);
   }
 }
