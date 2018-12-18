@@ -7,6 +7,8 @@ import 'request.dart';
 import 'search_result_view_model.dart';
 import 'collection_view_model.dart';
 import 'tunes_list_page.dart';
+import 'track_view_model.dart';
+import 'track_entity.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -17,7 +19,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> implements OutputBoundary {
+class _MyHomePageState extends State<MyHomePage>
+    implements OutputBoundary<Iterable<TrackEntity>> {
   InputBoundary inputBoundary = Interactor();
 
   bool _areButtonsDisabled = false;
@@ -55,37 +58,26 @@ class _MyHomePageState extends State<MyHomePage> implements OutputBoundary {
   }
 
   @override
-  receive({Future response}) {
+  receive({Future<Iterable<TrackEntity>> response}) {
     response.then((value) {
       setState(() => _areButtonsDisabled = false);
+      
+      Map<String, CollectionViewModel> collections =
+          Map<String, CollectionViewModel>();
+
       for (var track in value) {
         debugPrint(track.toString());
+        var collectionName = track.collectionName;
+        if (collections[collectionName] == null)
+          collections[collectionName] = CollectionViewModel(collectionName,<TrackViewModel>[]);
+        collections[collectionName].tracks.add(TrackViewModel(
+            '${track.trackNumber} - ${track.trackName}',
+            track.artistName,
+            track.artworkUrl60));
+            
       }
-      SearchResultViewModel.of(context).collections = <CollectionViewModel>[
-        CollectionViewModel(
-          'Chapter A',
-          <TrackViewModel>[
-            TrackViewModel('Section A0'),
-            TrackViewModel('Section A1'),
-            TrackViewModel('Section A2'),
-          ],
-        ),
-        CollectionViewModel(
-          'Chapter B',
-          <TrackViewModel>[
-            TrackViewModel('Section B0'),
-            TrackViewModel('Section B1'),
-          ],
-        ),
-        CollectionViewModel(
-          'Chapter C',
-          <TrackViewModel>[
-            TrackViewModel('Section C0'),
-            TrackViewModel('Section C1'),
-            TrackViewModel('Section C2'),
-          ],
-        ),
-      ];
+      SearchResultViewModel.of(context).collections = collections.values.toList();
+
       Navigator.push(
         context,
         MaterialPageRoute(
