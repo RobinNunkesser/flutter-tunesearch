@@ -20,7 +20,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage>
-    implements OutputBoundary<Iterable<TrackEntity>> {
+    implements OutputBoundary<List<TrackEntity>> {
   InputBoundary inputBoundary = Interactor();
 
   bool _areButtonsDisabled = false;
@@ -58,12 +58,14 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   @override
-  receive({Future<Iterable<TrackEntity>> response}) {
+  receive({Future<List<TrackEntity>> response}) {
     response.then((value) {
       setState(() => _areButtonsDisabled = false);
       
       Map<String, CollectionViewModel> collections =
           Map<String, CollectionViewModel>();
+
+      value.sort();
 
       for (var track in value) {
         debugPrint(track.toString());
