@@ -3,6 +3,9 @@ import 'my_home_page.dart';
 import 'platform_app.dart';
 import 'search_result_view_model.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'tune_search_localizations_delegate.dart';
+import 'tune_search_localizations.dart';
 
 void main() => runApp(MyApp(model: SearchResultViewModel()));
 
@@ -16,8 +19,17 @@ class MyApp extends StatelessWidget {
     return ScopedModel<SearchResultViewModel>(
       model: model,
       child: PlatformApp(
-        title: 'Tune Search',
-        home: MyHomePage(title: 'Suche'),
+        onGenerateTitle: (BuildContext context) => TunesSearchLocalizations.of(context).title,
+        home: MyHomePage(),            
+        supportedLocales: [
+          const Locale('en', ''),
+          const Locale('de', ''),
+        ],
+        localizationsDelegates: [
+          const TuneSearchLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
       ),
     );
   }

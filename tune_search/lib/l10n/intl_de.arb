@@ -1,0 +1,33 @@
+{
+  "title": "Tune Search",
+  "@title": {
+    "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleSearch": "Suche",
+  "@titleSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "buttonSearch": "Suchen",
+  "@buttonSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "hintSearch": "Suchbegriff",
+  "@hintSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleTracks": "Tracks",
+  "@titleTracks": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alertTitle": "Fehler",
+  "@alertTitle": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

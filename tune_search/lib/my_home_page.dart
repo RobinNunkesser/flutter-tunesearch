@@ -5,15 +5,13 @@ import 'output_boundary.dart';
 import 'interactor.dart';
 import 'request.dart';
 import 'search_result_view_model.dart';
-import 'collection_view_model.dart';
 import 'tunes_list_page.dart';
-import 'track_view_model.dart';
 import 'track_entity.dart';
+import 'collections_presenter.dart';
+import 'tune_search_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -30,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return PlatformScaffold(
         appBar: PlatformAppBar(
-          title: Text(widget.title),
+          title: Text(TunesSearchLocalizations.of(context).titleSearch),
         ),
         body: SafeArea(
             child: Column(children: <Widget>[
@@ -38,14 +36,14 @@ class _MyHomePageState extends State<MyHomePage>
             child: TextField(
               controller: _searchview,
               decoration: InputDecoration(
-                hintText: "Suchbegriff",
+                hintText: TunesSearchLocalizations.of(context).hintSearch,
                 hintStyle: TextStyle(color: Colors.grey[300]),
               ),
               textAlign: TextAlign.center,
             ),
           ),
           PlatformButton(
-            child: Text('Suchen'),
+            child: Text(TunesSearchLocalizations.of(context).buttonSearch),
             onPressed: _areButtonsDisabled ? null : _search,
           ),
         ])));
@@ -61,31 +59,13 @@ class _MyHomePageState extends State<MyHomePage>
   receive({Future<List<TrackEntity>> response}) {
     response.then((value) {
       setState(() => _areButtonsDisabled = false);
-      
-      Map<String, CollectionViewModel> collections =
-          Map<String, CollectionViewModel>();
-
-      value.sort();
-
-      for (var track in value) {
-        debugPrint(track.toString());
-        var collectionName = track.collectionName;
-        if (collections[collectionName] == null)
-          collections[collectionName] = CollectionViewModel(collectionName,<TrackViewModel>[]);
-        collections[collectionName].tracks.add(TrackViewModel(
-            '${track.trackNumber} - ${track.trackName}',
-            track.artistName,
-            track.artworkUrl60));
             
-      }
-      SearchResultViewModel.of(context).collections = collections.values.toList();
+      SearchResultViewModel.of(context).collections = CollectionsPresenter().present(value);
 
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => TunesListPage(
-                  title: 'Tracks',
-                )),
+            builder: (context) => TunesListPage()),
       );
     }).catchError((error) => displayError(context, error));
   }
@@ -96,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage>
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Fehler'),
+          title: Text(TunesSearchLocalizations.of(context).alertTitle),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -106,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
           actions: <Widget>[
             FlatButton(
-              child: Text('OK'),
+              child: Text(MaterialLocalizations.of(context).okButtonLabel),
               onPressed: () {
                 Navigator.of(context).pop();
               },

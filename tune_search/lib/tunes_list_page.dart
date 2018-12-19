@@ -4,11 +4,10 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'collection_item.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'search_result_view_model.dart';
+import 'tune_search_localizations.dart';
 
 class TunesListPage extends StatefulWidget {
-  TunesListPage({Key key, this.title}) : super(key: key);
-  final String title;
-
+  TunesListPage({Key key}) : super(key: key);
   @override
   _TunesListPageState createState() => _TunesListPageState();
 }
@@ -18,7 +17,7 @@ class _TunesListPageState extends State<TunesListPage> {
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text(widget.title),
+        title: Text(TunesSearchLocalizations.of(context).titleTracks),
       ),
       body: SafeArea(child: ScopedModelDescendant<SearchResultViewModel>(
         builder: (context, child, model) {

@@ -1,0 +1,34 @@
+{
+  "@@last_modified": "2018-12-19T12:35:56.036009",
+  "title": "Tune Search",
+  "@title": {
+    "description": "Title for the application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleSearch": "Search",
+  "@titleSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "buttonSearch": "Search",
+  "@buttonSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "hintSearch": "Search term",
+  "@hintSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleTracks": "Tracks",
+  "@titleTracks": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alertTitle": "Error",
+  "@alertTitle": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
