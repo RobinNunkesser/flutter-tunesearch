@@ -11,7 +11,7 @@ class CollectionItem extends StatelessWidget {
     return ListTile(
       title: Text(track.title),
       subtitle: Text(track.subtitle),
-      leading: CircleAvatar(backgroundImage: NetworkImage(track.artworkUrl)),
+      leading: Image.network(track.artworkUrl),
     );
   }
 
