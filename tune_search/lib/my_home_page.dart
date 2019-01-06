@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'input_boundary.dart';
 import 'output_boundary.dart';
@@ -29,6 +30,16 @@ class _MyHomePageState extends State<MyHomePage>
     return PlatformScaffold(
         appBar: PlatformAppBar(
           title: Text(TunesSearchLocalizations.of(context).titleSearch),
+          trailingActions: <Widget>[
+            PlatformIconButton(
+              onPressed: () => showLicensePage(context: context),
+              iosIcon: Icon(
+                CupertinoIcons.info,
+                size: 28.0,
+              ),
+              androidIcon: Icon(Icons.info),
+            ),
+          ],
         ),
         body: SafeArea(
             child: Column(children: <Widget>[
@@ -59,13 +70,13 @@ class _MyHomePageState extends State<MyHomePage>
   receive({Future<List<TrackEntity>> response}) {
     response.then((value) {
       setState(() => _areButtonsDisabled = false);
-            
-      SearchResultViewModel.of(context).collections = CollectionsPresenter().present(value);
+
+      SearchResultViewModel.of(context).collections =
+          CollectionsPresenter().present(value);
 
       Navigator.push(
         context,
-        MaterialPageRoute(
-            builder: (context) => TunesListPage()),
+        MaterialPageRoute(builder: (context) => TunesListPage()),
       );
     }).catchError((error) => displayError(context, error));
   }
