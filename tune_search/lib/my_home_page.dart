@@ -4,11 +4,10 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'input_boundary.dart';
 import 'output_boundary.dart';
 import 'interactor.dart';
-import 'request.dart';
+import 'search_request.dart';
 import 'search_result_view_model.dart';
 import 'tunes_list_page.dart';
-import 'track_entity.dart';
-import 'collections_presenter.dart';
+import 'collection_view_model.dart';
 import 'tune_search_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -19,7 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage>
-    implements OutputBoundary<List<TrackEntity>> {
+    implements OutputBoundary<List<CollectionViewModel>> {
   InputBoundary inputBoundary = Interactor();
 
   bool _areButtonsDisabled = false;
@@ -62,18 +61,15 @@ class _MyHomePageState extends State<MyHomePage>
 
   void _search() {
     inputBoundary.send(
-        request: Request(_searchview.text), outputBoundary: this);
+        request: SearchRequest(_searchview.text), outputBoundary: this);
     setState(() => _areButtonsDisabled = true);
   }
 
   @override
-  receive({Future<List<TrackEntity>> response}) {
+  receive({Future<List<CollectionViewModel>> response}) {
     response.then((value) {
       setState(() => _areButtonsDisabled = false);
-
-      SearchResultViewModel.of(context).collections =
-          CollectionsPresenter().present(value);
-
+      SearchResultViewModel.of(context).collections = value;        
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TunesListPage()),
