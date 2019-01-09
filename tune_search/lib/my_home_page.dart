@@ -19,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     implements OutputBoundary<List<CollectionViewModel>> {
-  InputBoundary inputBoundary = Interactor();
+  InputBoundary<SearchRequest> inputBoundary = Interactor();
 
   bool _areButtonsDisabled = false;
   var _searchview = TextEditingController();
