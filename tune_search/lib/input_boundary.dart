@@ -1,6 +1,5 @@
 import 'output_boundary.dart';
-import 'request.dart';
 
-abstract class InputBoundary<T extends Request> {
+abstract class InputBoundary<T> {
   send({T request,OutputBoundary outputBoundary});
 }

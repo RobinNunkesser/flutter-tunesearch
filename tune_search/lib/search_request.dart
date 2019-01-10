@@ -1,6 +1,4 @@
-import 'request.dart';
-
-class SearchRequest implements Request {
+class SearchRequest  {
   final String searchTerm;
   SearchRequest(this.searchTerm);
 }
