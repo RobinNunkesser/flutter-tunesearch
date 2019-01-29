@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'collection_item.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'search_result_view_model.dart';
-import 'tune_search_localizations.dart';
+import 'package:tune_search/tune_search.dart';
 
 class TunesListPage extends StatefulWidget {
   TunesListPage({Key key}) : super(key: key);

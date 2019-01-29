@@ -1,4 +1,4 @@
-import 'track_view_model.dart';
+import 'package:tune_search/tune_search.dart';
 
 class CollectionViewModel {
   CollectionViewModel(this.title, [this.tracks = const <TrackViewModel>[]]);

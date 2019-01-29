@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'dart:async';
-import 'tune_search_localizations.dart';
-
+import 'package:tune_search/tune_search.dart';
 
 class TuneSearchLocalizationsDelegate extends LocalizationsDelegate<TunesSearchLocalizations> {
   const TuneSearchLocalizationsDelegate();

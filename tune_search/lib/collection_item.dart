@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'collection_view_model.dart';
-import 'track_view_model.dart';
+import 'package:tune_search/tune_search.dart';
 
 class CollectionItem extends StatelessWidget {
   const CollectionItem(this.entry);

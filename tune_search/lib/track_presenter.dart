@@ -1,6 +1,4 @@
-import 'track_entity.dart';
-import 'track_view_model.dart';
-import 'presenter.dart';
+import 'package:tune_search/tune_search.dart';
 
 class TrackPresenter implements Presenter<TrackEntity,TrackViewModel>{
   TrackViewModel present(TrackEntity entity) {

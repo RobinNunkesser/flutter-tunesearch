@@ -16,12 +16,12 @@ class TrackEntity implements Comparable {
 
   factory TrackEntity.fromJson(Map<String, dynamic> json) {
     return TrackEntity(
-      artistName: json['artistName'],
-      collectionName: json['collectionName'],
-      trackName: json['trackName'],
-      trackNumber: json['trackNumber'],
-      discNumber: json['discNumber'],
-      artworkUrl60: json['artworkUrl60'],
+      artistName: json['artistName'] as String,
+      collectionName: json['collectionName'] as String,
+      trackName: json['trackName'] as String,
+      trackNumber: json['trackNumber'] as int,
+      discNumber: json['discNumber'] as int,
+      artworkUrl60: json['artworkUrl60'] as String,
     );
   }
 

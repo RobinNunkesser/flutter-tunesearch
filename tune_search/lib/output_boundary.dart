@@ -1,3 +1,3 @@
 abstract class OutputBoundary<T> {
-  receive({Future<T> response});
+  void receive({Future<T> response});
 }

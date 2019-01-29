@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'track_entity.dart';
+import 'package:tune_search/tune_search.dart';
 
 class TunesSearchGateway {
 
@@ -11,7 +11,7 @@ class TunesSearchGateway {
       final responseJson = json.decode(httpResponse.body);
       var results = responseJson['results'];
       if (results is List) {
-        return results.map((track) => TrackEntity.fromJson(track)).toList();
+        return results.map((track) => TrackEntity.fromJson(track as Map<String,dynamic>)).toList();
       } else {
         return Future.error(Exception('No tracks'));
       }

@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'input_boundary.dart';
-import 'output_boundary.dart';
-import 'interactor.dart';
-import 'search_request.dart';
-import 'search_result_view_model.dart';
-import 'tunes_list_page.dart';
-import 'collection_view_model.dart';
-import 'tune_search_localizations.dart';
+import 'package:tune_search/tune_search.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -74,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage>
         context,
         MaterialPageRoute(builder: (context) => TunesListPage()),
       );
-    }).catchError((error) => displayError(context, error));
+    }).catchError((error) => displayError(context, error as Exception));
   }
 
   Future<void> displayError(BuildContext context, Exception e) async {

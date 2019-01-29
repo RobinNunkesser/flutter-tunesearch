@@ -1,5 +1,5 @@
-import 'output_boundary.dart';
+import 'package:tune_search/tune_search.dart';
 
 abstract class InputBoundary<T> {
-  send({T request,OutputBoundary outputBoundary});
+  void send({T request,OutputBoundary outputBoundary});
 }
