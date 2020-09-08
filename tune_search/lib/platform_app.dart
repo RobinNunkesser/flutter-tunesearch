@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class PlatformApp extends PlatformWidgetBase<CupertinoApp, MaterialApp> {
@@ -12,7 +12,7 @@ class PlatformApp extends PlatformWidgetBase<CupertinoApp, MaterialApp> {
   PlatformApp({this.title = '', this.home, this.supportedLocales, this.localizationsDelegates, this.onGenerateTitle});
 
   @override
-  MaterialApp createAndroidWidget(BuildContext context) {
+  MaterialApp createMaterialWidget(BuildContext context) {
     if (supportedLocales == null) {
       return MaterialApp(
         onGenerateTitle: onGenerateTitle,
@@ -31,7 +31,7 @@ class PlatformApp extends PlatformWidgetBase<CupertinoApp, MaterialApp> {
   }
 
   @override
-  CupertinoApp createIosWidget(BuildContext context) {
+  CupertinoApp createCupertinoWidget(BuildContext context) {
     if (supportedLocales == null) {
       return CupertinoApp(
         onGenerateTitle: onGenerateTitle,

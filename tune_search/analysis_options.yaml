@@ -51,5 +51,5 @@ linter:
     - unnecessary_getters_setters
     - unnecessary_new
     - unrelated_type_equality_checks
-    - unawaited_futures
+    #- unawaited_futures
     - valid_regexps

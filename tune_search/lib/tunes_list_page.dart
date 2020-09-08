@@ -4,6 +4,8 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:tune_search/tune_search.dart';
 
+import 'collection_item.dart';
+
 class TunesListPage extends StatefulWidget {
   TunesListPage({Key key}) : super(key: key);
   @override

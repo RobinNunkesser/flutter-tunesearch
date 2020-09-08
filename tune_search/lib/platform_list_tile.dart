@@ -9,7 +9,7 @@ class PlatformListTile extends PlatformWidgetBase<Material, MergeSemantics> {
   PlatformListTile({this.title, this.subtitle});
 
   @override
-  MergeSemantics createAndroidWidget(BuildContext context) {
+  MergeSemantics createMaterialWidget(BuildContext context) {
     return MergeSemantics(
       child: ListTile(
         title: Text(title),
@@ -20,7 +20,7 @@ class PlatformListTile extends PlatformWidgetBase<Material, MergeSemantics> {
   }
 
   @override
-  Material createIosWidget(BuildContext context) {
+  Material createCupertinoWidget(BuildContext context) {
     return Material(
         color: Color(0xFFFFFFFF),
         child: MergeSemantics(

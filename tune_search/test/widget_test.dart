@@ -5,14 +5,13 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:tune_search/main.dart';
+import 'package:tune_search/search_result_view_model.dart';
 
 void main() {
   testWidgets('Build app and trigger frame', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(MyApp(model: SearchResultViewModel()));
   });
 }
