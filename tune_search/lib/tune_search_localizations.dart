@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
-import 'l10n/messages_all.dart';
+import 'I10n/messages_all.dart';
 
 class TunesSearchLocalizations {
   static Future<TunesSearchLocalizations> load(Locale locale) {
