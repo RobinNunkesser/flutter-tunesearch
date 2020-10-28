@@ -1,5 +1,3 @@
-library core_ports;
-
 import 'package:core_ports/track_entity.dart';
 
 class CollectionEntity {

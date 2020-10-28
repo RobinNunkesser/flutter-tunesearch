@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  core_ports:
+    path: ../core_ports/
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

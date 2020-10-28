@@ -4,6 +4,5 @@ import 'package:core_ports/tunes_search_engine.dart';
 
 void main() {
   test('a test', () {
-    final testee = TunesSearchEngine();
   });
 }

@@ -43,6 +43,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
+  core_ports:
+    dependency: "direct main"
+    description:
+      path: "../core_ports"
+      relative: true
+    source: path
+    version: "0.0.1"
+  explicit_architecture:
+    dependency: transitive
+    description:
+      name: explicit_architecture
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   fake_async:
     dependency: transitive
     description:
