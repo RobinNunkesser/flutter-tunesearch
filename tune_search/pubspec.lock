@@ -294,6 +294,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.1"
+  tunesearchexample_mockcore:
+    dependency: "direct dev"
+    description:
+      name: tunesearchexample_mockcore
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   typed_data:
     dependency: transitive
     description:
