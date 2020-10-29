@@ -1,5 +1,4 @@
-import 'package:core_ports/collection_entity.dart';
-import 'package:core_ports/track_entity.dart';
+import 'package:tunesearchexample_core_ports/tunesearchexample_core_ports.dart';
 import 'package:tune_search/collection_view_model.dart';
 import 'package:tune_search/track_view_model.dart';
 

@@ -1,7 +1,4 @@
-import 'package:core_ports/abstract_search_tracks_command.dart';
-import 'package:core_ports/collection_entity.dart';
-import 'package:core_ports/search_tracks_dto.dart';
-import 'package:core_ports/track_entity.dart';
+import 'package:tunesearchexample_core_ports/tunesearchexample_core_ports.dart';
 
 class MockSearchTracksCommand implements AbstractSearchTracksCommand {
   @override

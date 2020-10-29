@@ -85,13 +85,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  core_ports:
-    dependency: transitive
-    description:
-      path: core_ports
-      relative: true
-    source: path
-    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
@@ -294,6 +287,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.19-nullsafety.2"
+  tunesearchexample_core_ports:
+    dependency: "direct dev"
+    description:
+      name: tunesearchexample_core_ports
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   typed_data:
     dependency: transitive
     description:

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tune_search/tune_search_localizations.dart';
 import 'package:core/mock_search_tracks_command.dart';
-import 'package:core_ports/search_tracks_dto.dart';
-import 'package:core_ports/collection_entity.dart';
 import 'package:tune_search/tunes_list_page.dart';
+import 'package:tunesearchexample_core_ports/tunesearchexample_core_ports.dart';
 import 'package:tune_search/adapters/entity_mappings.dart';
 
 class MyHomePage extends StatefulWidget {
