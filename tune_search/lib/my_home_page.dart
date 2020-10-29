@@ -4,6 +4,8 @@ import 'package:tunesearchexample_mockcore/tunesearchexample_mockcore.dart';
 import 'package:tune_search/tunes_list_page.dart';
 import 'package:tunesearchexample_core_ports/tunesearchexample_core_ports.dart';
 import 'package:tune_search/adapters/entity_mappings.dart';
+import 'package:core/search_tracks_command.dart';
+import 'package:infrastructure/adapters/tunes_search_engine_adapter.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -16,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var _searchview = TextEditingController();
   bool _areButtonsDisabled = false;
-  var searchCommand = MockSearchTracksCommand();
+  var searchCommand = SearchTracksCommand(TunesSearchEngineAdapter());
 
   @override
   Widget build(BuildContext context) {

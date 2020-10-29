@@ -39,6 +39,9 @@ dev_dependencies:
   core:
     path: ./core/
 
+  infrastructure:
+    path: ./infrastructure/
+
   tunesearchexample_core_ports: ^0.0.1
   tunesearchexample_mockcore: ^0.0.1
 
