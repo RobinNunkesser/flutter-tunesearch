@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tune_search/tune_search_localizations.dart';
+import 'package:core/mock_search_tracks_command.dart';
+import 'package:core_ports/search_tracks_dto.dart';
+import 'package:core_ports/collection_entity.dart';
+import 'package:tune_search/tunes_list_page.dart';
+import 'package:tune_search/adapters/entity_mappings.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -12,6 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var _searchview = TextEditingController();
   bool _areButtonsDisabled = false;
+  var searchCommand = MockSearchTracksCommand();
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +49,50 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _search() {
+    searchCommand
+        .execute(
+        inDTO: SearchTracksDTO(term: _searchview.text))
+        .then(success)
+        .catchError((error) => failure(error));
+    setState(() => _areButtonsDisabled = true);
+  }
 
+  void success(List<CollectionEntity> collections) {
+      setState(() => _areButtonsDisabled = false);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TunesListPage(collections: collections.map((collection) => collection.toCollectionViewModel()).toList())),
+      );
+  }
+
+  void failure(Exception error) {
+    showError(context, error);
+  }
+
+  Future<void> showError(BuildContext context, Exception e) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(TunesSearchLocalizations.of(context).alertTitle),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(e.toString()),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(MaterialLocalizations.of(context).okButtonLabel),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
