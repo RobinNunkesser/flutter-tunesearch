@@ -1,4 +1,4 @@
-import 'package:tunesearchexample_core_ports/track_entity.dart';
+import 'package:infrastructure/adapters/track_entity.dart';
 
 import '../result_entity.dart';
 

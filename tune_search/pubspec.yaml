@@ -42,8 +42,7 @@ dev_dependencies:
   infrastructure:
     path: ./infrastructure/
 
-  tunesearchexample_core_ports: ^0.0.1
-  tunesearchexample_mockcore: ^0.0.1
+  tunesearchexample_core_ports: ^0.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

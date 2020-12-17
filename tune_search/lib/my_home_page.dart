@@ -1,11 +1,12 @@
+import 'package:core/search_tracks_command.dart';
 import 'package:flutter/material.dart';
+import 'package:infrastructure/adapters/tunes_search_engine_adapter.dart';
+import 'package:tune_search/adapters/entity_mappings.dart';
 import 'package:tune_search/tune_search_localizations.dart';
-import 'package:tunesearchexample_mockcore/tunesearchexample_mockcore.dart';
 import 'package:tune_search/tunes_list_page.dart';
 import 'package:tunesearchexample_core_ports/tunesearchexample_core_ports.dart';
-import 'package:tune_search/adapters/entity_mappings.dart';
-import 'package:core/search_tracks_command.dart';
-import 'package:infrastructure/adapters/tunes_search_engine_adapter.dart';
+
+import 'search_term_dto.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -15,7 +16,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   var _searchview = TextEditingController();
   bool _areButtonsDisabled = false;
   var searchCommand = SearchTracksCommand(TunesSearchEngineAdapter());
@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(TunesSearchLocalizations.of(context).titleSearch),
         actions: [IconButton(icon: Icon(Icons.info),
-          onPressed: () => showLicensePage(context: context))],
+            onPressed: () => showLicensePage(context: context))],
       ),
       body: SafeArea(
         child: Column(
@@ -52,18 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
   void _search() {
     searchCommand
         .execute(
-        inDTO: SearchTracksDTO(term: _searchview.text))
+        inDTO: SearchTermDTO(term: _searchview.text))
         .then(success)
         .catchError((error) => failure(error));
     setState(() => _areButtonsDisabled = true);
   }
 
-  void success(List<CollectionEntity> collections) {
-      setState(() => _areButtonsDisabled = false);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => TunesListPage(collections: collections.map((collection) => collection.toCollectionViewModel()).toList())),
-      );
+  void success(List<TrackCollection> collections) {
+    setState(() => _areButtonsDisabled = false);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>
+          TunesListPage(collections: collections.map((collection) =>
+              collection.toCollectionViewModel()).toList())),
+    );
   }
 
   void failure(Exception error) {

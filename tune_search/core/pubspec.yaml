@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  tunesearchexample_core_ports: ^0.0.1
+  tunesearchexample_core_ports: ^0.0.2
 
 dev_dependencies:
   flutter_test:
