@@ -12,8 +12,6 @@ jobs:
         with:
           flutter-version: '1.22.4'
       - run: |
-          pwd
-          ls
           cd tune_search
           flutter pub get
           flutter test      
